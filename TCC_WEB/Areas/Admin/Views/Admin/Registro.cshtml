@@ -1,0 +1,107 @@
+﻿@model TCC_WEB.Models.RegistroViewModel
+@{
+	ViewData["Title"] = "Registro";
+}
+
+<h2>Registro</h2>
+
+
+<form asp-action="Registro" asp-controller="Home" method="post">
+	
+	<div class="container-fluid">
+		<div class="form-group col-sm-3">
+			<div class="input-group">
+				<label class="input-group-addon" asp-for="Nome"></label>
+				<input input="text" class="form-control" placeholder="Nome" asp-for="Nome" />
+			</div>
+			<span asp-validation-for="Nome" class="text-danger"></span>
+		</div>
+
+		<div class="form-group col-sm-6">
+			<div class="input-group">
+				<label class="input-group-addon" asp-for="SobreNome"></label>
+				<input input="text" class="form-control" placeholder="Sobrenome" asp-for="SobreNome" />
+			</div>
+			<span asp-validation-for="SobreNome" class="text-danger"></span>
+		</div>
+
+		<div class="form-group col-sm-4">
+			<div class="input-group">
+				<label class="input-group-addon" asp-for="NomeUsuario"></label>
+				<input input="text" class="form-control" placeholder="Nome de Usuário" asp-for="NomeUsuario" />
+			</div>
+			<span asp-validation-for="NomeUsuario" class="text-danger"></span>
+		</div>
+
+		<div class="form-group col-sm-2">
+			<div class="input-group">
+				<label class="input-group-addon" asp-for="Idade"></label>
+				<input input="text" class="form-control" placeholder="Idade" asp-for="Idade" />
+			</div>
+			<span asp-validation-for="Idade" class="text-danger"></span>
+		</div>
+
+		
+		<div class="form-group col-sm-12">
+			<div class="input-group col-sm-7">
+					<label class="input-group-addon" asp-for="Email"></label>
+					<input input="text" class="form-control" placeholder="Email" asp-for="Email" />
+			</div>
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+
+		<div class="form-group col-sm-3">
+			<div class="input-group ">
+				<label class="input-group-addon" asp-for="Senha"></label>
+				<input input="text" class="form-control" placeholder="Senha" asp-for="Senha" />
+			</div>
+			<span asp-validation-for="Senha" class="text-danger"></span>
+		</div>
+
+
+		<div class="form-group col-sm-12">
+			<button type="submit" class="btn btn-primary">Registrar</button>
+		</div>
+	</div>
+
+</form>
+
+<!--	
+<div class="form-row">
+	<button type="submit" class="btn btn-primary">Registrar</button>
+</div>
+	-->
+
+
+<!--
+<form class="needs-validation" novalidate>
+	<div class="form-group col-sm-6">
+		<label for="inputNome">Seu nome</label>
+		<input type="text" class="form-control" id="inputNome" placeholder="Nome" />
+	</div>
+
+	<div class="form-group col-sm-6">
+		<label for="inputSobrenome">Seu sobrenome</label>
+		<input type="text" class="form-control" id="inputSobrenome" placeholder="Sobrenome" />
+	</div>
+
+	<div class="form-group col-sm-12">
+		<label for="inputEnd">Seu endereço</label>
+		<input type="text" class="form-control" id="inputEnd" placeholder="Endereço" />
+	</div>
+
+	<div class="form-group col-sm-6">
+		<label for="inputCidade">Sua cidade</label>
+		<input type="text" class="form-control" id="inputCidade" placeholder="Cidade" />
+	</div>
+
+	<div class="form-group" col-sm-4>
+		<label for="inputEst"></label>
+		<select id="inputEst" class="form-control">
+			<option>...</option>
+			<option>...</option>
+			<option>...</option>
+		</select>
+	</div>
+</form>
+	-->

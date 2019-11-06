@@ -1,0 +1,78 @@
+﻿@model IEnumerable<TCC_WEB.Models.Medicamento>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Medicamentos</h2>
+
+<p>
+	<a class="btn btn-primary" asp-action="Create">Criar Novo</a>
+</p>
+
+<form asp-action="Index" asp-controller="Medicamentos" method="post">
+
+	<div class="input-group col-sm-2">
+		<input class="form-control col-sm-2" name="txtProcurar" />
+		<button type="submit" class="btn btn-outline-dark col-sm-3"><i class="fas fa-search-plus"></i></button>
+	</div>
+
+</form>
+
+&ensp;
+
+<div class="table-responsive ">
+	<table class="table table-dark table-bordered">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.NomeGenerico)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.NomedeFabrica)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Fabricante)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.NomeGenerico)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.NomedeFabrica)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Fabricante)
+					</td>
+					<td>
+						<table class=" table-borderless table-hover">
+							<tr>
+								<th>
+									<a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.MedicamentoId">Edit</a>
+								</th>
+								<th>
+									&ensp;
+								</th>
+								<th>
+									<a class="btn btn-success" asp-action="Details" asp-route-id="@item.MedicamentoId">Details</a>
+								</th>
+								<th>
+									&ensp;
+								</th>
+								<th>
+									<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MedicamentoId">Delete</a>
+								</th>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

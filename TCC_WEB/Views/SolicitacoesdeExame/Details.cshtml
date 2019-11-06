@@ -1,0 +1,42 @@
+﻿@model TCC_WEB.Models.SolicitacaodeExame
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SolicitacaodeExame</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipodeExame)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipodeExame.NomedoExame)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Médico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Médico)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.SolicitacaodeExameId">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

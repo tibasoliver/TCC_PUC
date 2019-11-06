@@ -1,0 +1,56 @@
+﻿@model TCC_WEB.Models.Medicamento
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4>Medicamento</h4>
+
+<h2>Deletar</h2>
+
+<h3>Você está certo que deseja deletar?</h3>
+
+<div class="table-responsive ">
+	<table class="table table-dark table-borderless ">
+		<thead>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.NomeGenerico):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.NomeGenerico)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.NomedeFabrica):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.NomedeFabrica)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Fabricante):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Fabricante)</i>
+				</td>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+<div>  
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MedicamentoId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    </form>
+</div>

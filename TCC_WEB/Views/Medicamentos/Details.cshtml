@@ -1,0 +1,36 @@
+﻿@model TCC_WEB.Models.Medicamento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medicamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeGenerico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomeGenerico)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NomedeFabrica)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomedeFabrica)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fabricante)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fabricante)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.MedicamentoId">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

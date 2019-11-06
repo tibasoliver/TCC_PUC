@@ -1,0 +1,74 @@
+﻿@model TCC_WEB.Models.Receita
+
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h4>Receita</h4>
+
+<h2>Deletar</h2>
+
+<h3>Você está certo que deseja deletar?</h3>
+<div class="table-responsive ">
+	<table class="table table-dark table-borderless ">
+		<thead>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Data):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Data)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Medicamento):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Medicamento.NomeGenerico)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Dose):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Dose)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Paciente):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Paciente.Nome)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Médico):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Médico)</i>
+				</td>
+			</tr>
+		</thead>
+	</table>
+</div>
+<div>
+	<form asp-action="Delete">
+		<input type="hidden" asp-for="ReceitaId" />
+		<input type="submit" value="Delete" class="btn btn-danger" /> |
+		<a class="btn btn-primary" asp-action="Index">Back to List</a>
+	</form>
+</div>
