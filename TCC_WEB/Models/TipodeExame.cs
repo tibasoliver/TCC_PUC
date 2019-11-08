@@ -16,5 +16,7 @@ namespace TCC_WEB.Models
         public string NomedoExame { get; set; }
 
         public ICollection<SolicitacaodeExame> SolicitacoesdeExame { get; set; }
+
+        public ICollection<RecebimentodeExame> RecebimentosdeExame { get; set; }
     }
 }

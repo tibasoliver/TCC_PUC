@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TCC_WEB.Models.RecebimentodeExame>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	<a class="btn btn-primary" asp-action="Create">Criar Novo</a>
+</p>
+
+<form asp-action="Index" asp-controller="RecebimentosdeExame" method="post">
+
+	<div class="input-group col-sm-2">
+		<input class="form-control col-sm-2" name="txtProcurar" />
+		<button type="submit" class="btn btn-outline-dark col-sm-3"><i class="fas fa-search-plus"></i></button>
+	</div>
+
+</form>
+
+&ensp;
+
+
+<div class="table-responsive ">
+	<table class="table table-dark table-bordered">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Data)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.TipodeExame)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Dado)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Paciente)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.recebe)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Data)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.TipodeExame.NomedoExame)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Dado)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Paciente.Nome)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.recebe)
+					</td>
+					<td>
+						<table class=" table-borderless table-hover">
+							<tr>
+								<th>
+									<a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.RecebimentodeExameId">Edit</a>
+								</th>
+								<th>
+									&ensp;
+								</th>
+								<th>
+									<a class="btn btn-success" asp-action="Details" asp-route-id="@item.RecebimentodeExameId">Details</a>
+								</th>
+								<th>
+									&ensp;
+								</th>
+								<th>
+									<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.RecebimentodeExameId">Delete</a>
+								</th>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

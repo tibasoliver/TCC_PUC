@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TCC_WEB.Data.Migrations
 {
-    public partial class Consultas : Migration
+    public partial class Consulta : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,6 +12,8 @@ namespace TCC_WEB.Data.Migrations
                 name: "Consultas",
                 columns: table => new
                 {
+                    ConsultaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(nullable: false),
                     PacienteId = table.Column<int>(nullable: false),
                     Médico = table.Column<string>(maxLength: 150, nullable: false),
@@ -18,7 +21,7 @@ namespace TCC_WEB.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Consultas", x => new { x.Data, x.horario });
+                    table.PrimaryKey("PK_Consultas", x => x.ConsultaId);
                     table.ForeignKey(
                         name: "FK_Consultas_Pacientes_PacienteId",
                         column: x => x.PacienteId,

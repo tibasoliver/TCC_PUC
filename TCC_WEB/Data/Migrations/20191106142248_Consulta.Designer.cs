@@ -10,8 +10,8 @@ using TCC_WEB.Data;
 namespace TCC_WEB.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191022141955_Consultas")]
-    partial class Consultas
+    [Migration("20191106142248_Consulta")]
+    partial class Consulta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -138,9 +138,11 @@ namespace TCC_WEB.Data.Migrations
 
             modelBuilder.Entity("TCC_WEB.Models.Consulta", b =>
                 {
-                    b.Property<DateTime>("Data");
+                    b.Property<int>("ConsultaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("horario");
+                    b.Property<DateTime>("Data");
 
                     b.Property<string>("Médico")
                         .IsRequired()
@@ -148,7 +150,9 @@ namespace TCC_WEB.Data.Migrations
 
                     b.Property<int>("PacienteId");
 
-                    b.HasKey("Data", "horario");
+                    b.Property<int>("horario");
+
+                    b.HasKey("ConsultaId");
 
                     b.HasIndex("PacienteId");
 

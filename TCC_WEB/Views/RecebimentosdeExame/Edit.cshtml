@@ -1,4 +1,4 @@
-﻿@model TCC_WEB.Models.Consulta
+﻿@model TCC_WEB.Models.RecebimentodeExame
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,17 +6,27 @@
 
 <h2>Edit</h2>
 
-<h4>Consulta</h4>
+<h4>RecebimentodeExame</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ConsultaId" />
+            <input type="hidden" asp-for="RecebimentodeExameId" />
             <div class="form-group">
                 <label asp-for="Data" class="control-label"></label>
                 <input asp-for="Data" class="form-control" />
                 <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipodeExame" class="control-label"></label>
+                <select asp-for="TipodeExameId" class="form-control" asp-items="ViewBag.TipodeExameId"></select>
+                <span asp-validation-for="TipodeExameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dado" class="control-label"></label>
+                <input asp-for="Dado" class="form-control" />
+                <span asp-validation-for="Dado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Paciente" class="control-label"></label>
@@ -24,27 +34,12 @@
                 <span asp-validation-for="PacienteId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Médico" class="control-label"></label>
-                <select asp-for="Médico" class="form-control" asp-items="ViewBag.NomeMedico"></select>
-                <span asp-validation-for="Médico" class="text-danger"></span>
+                <div class="checkbox">
+					<label>
+						<input asp-for="recebe" /> Paciente recebe email?
+					</label>
+                </div>
             </div>
-			<div class="form-group">
-				<label asp-for="horario" class="control-label"></label>
-				<select asp-for="horario" class="form-control">
-					<option value="0">7:00AM</option>
-					<option value="1">8:00AM</option>
-					<option value="2">9:00AM</option>
-					<option value="3">10:00AM</option>
-					<option value="4">11:00AM</option>
-					<option value="5">12:00AM</option>
-					<option value="6">1:00PM</option>
-					<option value="7">2:00PM</option>
-					<option value="8">3:00PM</option>
-					<option value="9">4:00PM</option>
-					<option value="10">5:00PM</option>
-				</select>
-				<span asp-validation-for="horario" class="text-danger"></span>
-			</div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-success" />
             </div>

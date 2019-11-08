@@ -32,7 +32,7 @@ namespace TCC_WEB.Controllers
         public async Task<IActionResult> Index(string txtProcurar)
         {
             if (!String.IsNullOrEmpty(txtProcurar))
-                return View(await _context.Pacientes.Where(td => (td.Nome.ToUpper()+" "+ td.SobreNome.ToUpper()).Contains(txtProcurar.ToUpper())).ToListAsync());
+                return View(await _context.Pacientes.Where(td => (td.Nome.ToUpper()+" "+ td.SobreNome.ToUpper()+td.Idade.ToString().ToUpper()).Contains(txtProcurar.ToUpper())).ToListAsync());
 
             return View(await _context.Pacientes.ToListAsync());
         }

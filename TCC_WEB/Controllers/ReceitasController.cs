@@ -46,7 +46,8 @@ namespace TCC_WEB.Controllers
                 return View(await _context.Receitas.Where(td => (td.Paciente.Nome.ToUpper() + " " + td.Médico.ToUpper()+" "+td.Medicamento.NomeGenerico).Contains(txtProcurar.ToUpper())).
                     Include(r => r.Medicamento).Include(r => r.Paciente).ToListAsync());
 
-            return View(await _context.Receitas.ToListAsync());
+            var applicationDbContext = _context.Receitas.Include(r => r.Medicamento).Include(r => r.Paciente);
+            return View(await applicationDbContext.ToListAsync());
         }
 
 

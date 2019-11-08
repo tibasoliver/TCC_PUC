@@ -4,31 +4,103 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<h4>Consulta</h4>
+<h2>Deletar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Você está certo que deseja deletar?</h3>
+<div class="table-responsive ">
+	<table class="table table-dark table-borderless ">
+		<thead>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Data):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Data)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Paciente):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Paciente.Nome)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.Médico):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<i>@Html.DisplayFor(model => model.Médico)</i>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<font size="4">@Html.DisplayNameFor(model => model.horario):</font>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					@if (Model.horario.ToString().Equals("seteam"))
+					{
+						<i>@Html.Raw("7:00AM")</i>
+					}
+					else if (Model.horario.ToString().Equals("oitoam"))
+					{
+						<i>@Html.Raw("8:00AM")</i>
+					}
+					else if (Model.horario.ToString().Equals("noveam"))
+					{
+						<i>@Html.Raw("9:00AM")</i>
+					}
+					else if (Model.horario.ToString().Equals("dezam"))
+					{
+						<i>@Html.Raw("10:00AM")</i>
+					}
+					else if (Model.horario.ToString().Equals("onzeam"))
+					{
+						<i>@Html.Raw("11:00AM")</i>
+					}
+					else if (Model.horario.ToString().Equals("dozeam"))
+					{
+						<i>@Html.Raw("12:00AM")</i>
+					}
+					else if (Model.horario.ToString().Equals("umapm"))
+					{
+						<i>@Html.Raw("01:00PM")</i>
+					}
+					else if (Model.horario.ToString().Equals("duaspm"))
+					{
+						<i>@Html.Raw("02:00PM")</i>
+					}
+					else if (Model.horario.ToString().Equals("trespm"))
+					{
+						<i>@Html.Raw("03:00PM")</i>
+					}
+					else if (Model.horario.ToString().Equals("quatropm"))
+					{
+						<i>@Html.Raw("04:00PM")</i>
+					}
+					else if (Model.horario.ToString().Equals("cincopm"))
+					{
+						<i>@Html.Raw("05:00PM")</i>
+					}
+				</td>
+			</tr>
+		</thead>
+	</table>
+</div>
 <div>
-    <h4>Consulta</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Paciente)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Paciente.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Médico)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Médico)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Data" />
-        <input type="hidden" asp-for="horario" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="ConsultaId" />
+			<input type="submit" value="Delete" class="btn btn-danger" /> |
+			<a class="btn btn-primary" asp-action="Index">Back to List</a>
+		</form>
 </div>

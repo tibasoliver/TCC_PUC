@@ -1,41 +1,128 @@
 ﻿@model IEnumerable<TCC_WEB.Models.Consulta>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+	<a class="btn btn-primary" asp-action="Create">Criar Novo</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Paciente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Médico)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paciente.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Médico)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<form asp-action="Index" asp-controller="Consultas" method="post">
+
+	<div class="input-group col-sm-2">
+		<input class="form-control col-sm-2" name="txtProcurar" />
+		<button type="submit" class="btn btn-outline-dark col-sm-3"><i class="fas fa-search-plus"></i></button>
+	</div>
+
+</form>
+
+&ensp;
+
+
+<div class="table-responsive ">
+	<table class="table table-dark table-bordered">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Data)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Paciente)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Médico)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.horario)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Data)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Paciente.Nome)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Médico)
+					</td>
+					<td>
+						@if (item.horario.ToString().Equals("seteam"))
+						{
+							@Html.Raw("7:00AM");
+						}
+						else if (item.horario.ToString().Equals("oitoam"))
+						{
+							@Html.Raw("8:00AM");
+						}
+						else if (item.horario.ToString().Equals("noveam"))
+						{
+							@Html.Raw("9:00AM");
+						}
+						else if (item.horario.ToString().Equals("dezam"))
+						{
+							@Html.Raw("10:00AM");
+						}
+						else if (item.horario.ToString().Equals("onzeam"))
+						{
+							@Html.Raw("11:00AM");
+						}
+						else if (item.horario.ToString().Equals("dozeam"))
+						{
+							@Html.Raw("12:00AM");
+						}
+						else if (item.horario.ToString().Equals("umapm"))
+						{
+							@Html.Raw("01:00PM");
+						}
+						else if (item.horario.ToString().Equals("duaspm"))
+						{
+							@Html.Raw("02:00PM");
+						}
+						else if (item.horario.ToString().Equals("trespm"))
+						{
+							@Html.Raw("03:00PM");
+						}
+						else if (item.horario.ToString().Equals("quatropm"))
+						{
+							@Html.Raw("04:00PM");
+						}
+						else if (item.horario.ToString().Equals("cincopm"))
+						{
+							@Html.Raw("05:00PM");
+						}
+					</td>
+					<td>
+						<table class=" table-borderless table-hover">
+							<tr>
+								<th>
+									<a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ConsultaId">Edit</a>
+								</th>
+								<th>
+									&ensp;
+								</th>
+								<th>
+									<a class="btn btn-success" asp-action="Details" asp-route-id="@item.ConsultaId">Details</a>
+								</th>
+								<th>
+									&ensp;
+								</th>
+								<th>
+									<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ConsultaId">Delete</a>
+								</th>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

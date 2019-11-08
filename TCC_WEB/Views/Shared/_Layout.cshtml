@@ -48,6 +48,7 @@
 					@if (SignInManager.IsSignedIn(User))
 					{
 						<li><a asp-area="" asp-controller="Pacientes" asp-action="Index">Pacientes</a></li>
+						<li><a asp-area="" asp-controller="Consultas" asp-action="Index">Consultas</a></li>
 						//<li><a asp-area="" asp-controller="Home" asp-action="Registro">Registro</a></li>
 						//<li><a asp-area="" asp-controller="Home" asp-action="NovoNivelAcesso">Nivel Acesso</a></li>
 						//<li><a asp-area="" asp-controller="Home" asp-action="AssociarUsuario">Associar Usuário</a></li>
@@ -58,6 +59,7 @@
 						<li><a asp-area="" asp-controller="Medicamentos" asp-action="Index">Medicamento</a></li>
 						<li><a asp-area="" asp-controller="Receitas" asp-action="Index">Receitas</a></li>
 						<li><a asp-area="" asp-controller="SolicitacoesdeExame" asp-action="Index">SE</a></li>
+						<li><a asp-area="" asp-controller="RecebimentosdeExame" asp-action="Index">RE</a></li>
 					}
 
 				</ul>

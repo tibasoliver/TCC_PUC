@@ -16,6 +16,7 @@ namespace TCC_WEB.Data
         public DbSet<TipodeExame> TiposdeExame { get; set; }
         public DbSet<Receita> Receitas { get; set; }
         public DbSet<SolicitacaodeExame> SolicitacoesdeExame { get; set; }
+        public DbSet<RecebimentodeExame> RecebimentosdeExame { get; set; }
 
         public DbSet<Consulta> Consultas { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -44,7 +45,13 @@ namespace TCC_WEB.Data
             modelBuilder.Entity<Consulta>().HasOne(e => e.Paciente).WithMany(e => e.Consultas).HasForeignKey(e => e.PacienteId);
             modelBuilder.Entity<Paciente>().HasMany(t => t.Consultas).WithOne(t => t.Paciente);
 
-            modelBuilder.Entity<Consulta>().HasKey(table => new { table.Data, table.horario });
+            modelBuilder.Entity<RecebimentodeExame>().HasOne(e => e.TipodeExame).WithMany(e => e.RecebimentosdeExame).HasForeignKey(e => e.TipodeExameId);
+            modelBuilder.Entity<TipodeExame>().HasMany(t => t.RecebimentosdeExame).WithOne(t => t.TipodeExame);
+
+            modelBuilder.Entity<RecebimentodeExame>().HasOne(e => e.Paciente).WithMany(e => e.RecebimentosdeExame).HasForeignKey(e => e.PacienteId);
+            modelBuilder.Entity<Paciente>().HasMany(t => t.RecebimentosdeExame).WithOne(t => t.Paciente);
+
+            //modelBuilder.Entity<Consulta>().HasKey(table => new { table.Data, table.horario });
 
             base.OnModelCreating(modelBuilder);
         }

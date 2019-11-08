@@ -10,9 +10,9 @@ namespace TCC_WEB.Models
 {
     public class Consulta
     {
-        //public int ConsultaId { get; set; }
+        public int ConsultaId { get; set; }
 
-        [Key,Column(Order = 1)]
+        //[Key,Column(Order = 1)]
         [Required(ErrorMessage = "Informe a data.")]
         [DataType(DataType.Date)]
         public DateTime Data { get; set; }
@@ -25,7 +25,7 @@ namespace TCC_WEB.Models
         [StringLength(150)]
         public string Médico { get; set; }
 
-        [Key, Column(Order = 2)]
+        //[Key, Column(Order = 2)]
         [Required(ErrorMessage = "Informe o horário da consulta.")]
         [EnumDataType(typeof(Horario))]
         public Horario horario { get; set; }
