@@ -19,11 +19,6 @@ namespace TCC_WEB.Models
         [Display(Name = "Sobrenome")]
         [StringLength(100)]
         public string SobreNome { get; set; }
-
-        [Required(ErrorMessage = "Informe uma idade válida.")]
-        [Range(0, 120, ErrorMessage = "Entre um valor entre 0 e 120.")]
-        [Display(Name = "Idade")]
-
         
         [StringLength(100)]
         [DataType(DataType.EmailAddress)]

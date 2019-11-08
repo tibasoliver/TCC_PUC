@@ -9,26 +9,32 @@
 <div>
     <h4>Paciente</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SobreNome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SobreNome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Idade)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Idade)
-        </dd>
-    </dl>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Nome)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.SobreNome)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.SobreNome)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Idade)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Idade)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Email)
+		</dd>
+	</dl>
 </div>
 <div>
     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.PacienteId">Edit</a> |

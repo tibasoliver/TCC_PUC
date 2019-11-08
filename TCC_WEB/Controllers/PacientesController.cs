@@ -72,8 +72,9 @@ namespace TCC_WEB.Controllers
         [ValidateAntiForgeryToken]
         [Authorize]
         [Authorize(Roles = "Administrador,Atendente")]
-        public async Task<IActionResult> Create([Bind("PacienteId,Nome,SobreNome,Idade")] Paciente paciente)
+        public async Task<IActionResult> Create([Bind("PacienteId,Nome,SobreNome,Idade,Email")] Paciente paciente)
         {
+            //paciente.Email = "";
             if (ModelState.IsValid)
             {
                 _context.Add(paciente);
@@ -108,7 +109,7 @@ namespace TCC_WEB.Controllers
         [ValidateAntiForgeryToken]
         [Authorize]
         [Authorize(Roles = "Administrador,Atendente")]
-        public async Task<IActionResult> Edit(int id, [Bind("PacienteId,Nome,SobreNome,Idade")] Paciente paciente)
+        public async Task<IActionResult> Edit(int id, [Bind("PacienteId,Nome,SobreNome,Idade,Email")] Paciente paciente)
         {
             if (id != paciente.PacienteId)
             {

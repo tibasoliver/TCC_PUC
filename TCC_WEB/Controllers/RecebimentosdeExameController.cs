@@ -14,6 +14,7 @@ using TCC_WEB.Models;
 using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TCC_WEB.Controllers
 {
@@ -30,6 +31,8 @@ namespace TCC_WEB.Controllers
 
 
         // GET: RecebimentosdeExame
+        [Authorize]
+        [Authorize(Roles = "Administrador,Atendente,Médico")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.RecebimentosdeExame.Include(r => r.Paciente).Include(r => r.TipodeExame);
@@ -37,6 +40,8 @@ namespace TCC_WEB.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [Authorize(Roles = "Administrador,Atendente,Médico")]
         public async Task<IActionResult> Index(string txtProcurar)
         {
 
@@ -50,6 +55,8 @@ namespace TCC_WEB.Controllers
         }
 
         // GET: RecebimentosdeExame/Details/5
+        [Authorize]
+        [Authorize(Roles = "Administrador,Atendente,Médico")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -70,6 +77,8 @@ namespace TCC_WEB.Controllers
         }
 
         // GET: RecebimentosdeExame/Create
+        [Authorize]
+        [Authorize(Roles = "Administrador,Médico")]
         public IActionResult Create()
         {
             ViewData["PacienteId"] = new SelectList(_context.Pacientes, "PacienteId", "Nome");
@@ -82,6 +91,8 @@ namespace TCC_WEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
+        [Authorize(Roles = "Administrador,Médico")]
         public async Task<IActionResult> Create([Bind("RecebimentodeExameId,Data,TipodeExameId,Dado,PacienteId,recebe")] RecebimentodeExame recebimentodeExame)
         {
             
@@ -147,6 +158,8 @@ namespace TCC_WEB.Controllers
         }
 
         // GET: RecebimentosdeExame/Edit/5
+        [Authorize]
+        [Authorize(Roles = "Administrador,Médico")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -169,6 +182,8 @@ namespace TCC_WEB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
+        [Authorize(Roles = "Administrador,Médico")]
         public async Task<IActionResult> Edit(int id, [Bind("RecebimentodeExameId,Data,TipodeExameId,Dado,PacienteId,recebe")] RecebimentodeExame recebimentodeExame)
         {
             if (id != recebimentodeExame.RecebimentodeExameId)
@@ -202,6 +217,8 @@ namespace TCC_WEB.Controllers
         }
 
         // GET: RecebimentosdeExame/Delete/5
+        [Authorize]
+        [Authorize(Roles = "Administrador,Médico")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -224,6 +241,8 @@ namespace TCC_WEB.Controllers
         // POST: RecebimentosdeExame/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
+        [Authorize(Roles = "Administrador,Médico")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var recebimentodeExame = await _context.RecebimentosdeExame.FindAsync(id);
