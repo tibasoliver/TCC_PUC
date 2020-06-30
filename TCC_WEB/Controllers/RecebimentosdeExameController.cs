@@ -15,6 +15,7 @@ using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
 using Microsoft.AspNetCore.Authorization;
+using MailKit.Security;
 
 namespace TCC_WEB.Controllers
 {
@@ -117,9 +118,9 @@ namespace TCC_WEB.Controllers
 
                     var message = new MimeMessage();
                     //message.From.Add(new MailboxAddress("Thiago", "thiagotcc1234@gmail.com"));
-                    message.From.Add(new MailboxAddress("Thiago", "thiagotcc1234@gmail.com"));
+                    message.From.Add(new MailboxAddress("HOSPITAL X", "thiagotcc1234@gmail.com"));
                     //message.To.Add(new MailboxAddress("Thiago Destinatário", "thiagoliveira.engmeca@gmail.com"));
-                    message.To.Add(new MailboxAddress("Thiago Destinatário", email.ToString()));
+                    message.To.Add(new MailboxAddress(paciente, email.ToString()));
                     message.Subject = "Resultado Exame do Hospital --- ";
                     message.Body = new TextPart("plain")
                     {
@@ -128,7 +129,8 @@ namespace TCC_WEB.Controllers
 
                     using (var client = new MailKit.Net.Smtp.SmtpClient())
                     {
-                        client.Connect("smtp.gmail.com", 587, false);
+                        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                        client.Connect("smtp.gmail.com", 587);
                         client.Authenticate("thiagotcc1234@gmail.com", "thiagotcc2@");
                         client.Send(message);
                         client.Disconnect(true);

@@ -14,17 +14,17 @@ namespace TCC_WEB.Models
         [DataType(DataType.DateTime)]
         public DateTime Data { get; set; }
 
-        public int MedicamentoId { get; set; }
         [Required(ErrorMessage = "Informe o nome genérico do medicamento.")]
+        public int MedicamentoId { get; set; }
         public Medicamento Medicamento { get; set; }
 
         [Required(ErrorMessage = "Informe a dose adequada.")]
         [StringLength(100)]
         public string Dose { get; set; }
 
-
-        public int PacienteId { get; set; }
         [Required(ErrorMessage = "Informe o nome do paciente.")]
+        public int PacienteId { get; set; }
+        
         public Paciente Paciente { get; set; }
 
         [Required(ErrorMessage = "Informe o nome do médico.")]
